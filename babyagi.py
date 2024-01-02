@@ -31,6 +31,7 @@ LLM_MODEL = os.getenv("LLM_MODEL", os.getenv("OPENAI_API_MODEL", "gpt-3.5-turbo"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 if not (LLM_MODEL.startswith("llama") or LLM_MODEL.startswith("human")):
     assert OPENAI_API_KEY, "\033[91m\033[1m" + "OPENAI_API_KEY environment variable is missing from .env" + "\033[0m\033[0m"
+OPENAI_API_BASE = os.getenv("OPENAI_API_BASE", "")
 
 # Table config
 RESULTS_STORE_NAME = os.getenv("RESULTS_STORE_NAME", os.getenv("TABLE_NAME", ""))
@@ -170,6 +171,7 @@ else:
 
 # Configure OpenAI
 openai.api_key = OPENAI_API_KEY
+openai.api_base = OPENAI_API_BASE
 
 
 # Llama embedding function
